@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import NameForm from './NameForm.js'
 import './App.css';
 
 class App extends Component {
@@ -15,11 +15,12 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Users</h1>
-        {this.state.users.map(user =>
-          <div key={user.id}>{user.username}</div>)}
+        <NameForm users={this.state.users} />
       </div>
     );
   }
 }
 
 export default App;
+
+
