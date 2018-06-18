@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class signInForm extends Component {
+class signUpForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,9 +29,9 @@ class signInForm extends Component {
 
   handleSubmit(event) {
     if(this.checkUser(this.state.username,this.state.password))
-      alert('found');
+      alert('User Already Exists');
     else
-      alert('not found');
+      alert('Account Created');
     event.preventDefault();
   }
 
@@ -66,4 +66,4 @@ class signInForm extends Component {
   }
 }
 
-export default signInForm;
+export default signUpForm;

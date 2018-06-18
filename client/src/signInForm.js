@@ -1,22 +1,18 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Link, Redirect } from 'react-router-dom'
 
 class signInForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      password: ''};
+      password: '',
+      redirect: false};
 
     this.handleChangeU = this.handleChangeU.bind(this);
     this.handleChangeP = this.handleChangeP.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  // componentDidMount(){
-  //   fetch('/users')
-  //     .then(res => res.json())
-  //     .then(users => this.setState({users}));
-  // }
 
   handleChangeU(event) {
     this.setState({username: event.target.value});
@@ -29,7 +25,7 @@ class signInForm extends Component {
 
   handleSubmit(event) {
     if(this.checkUser(this.state.username,this.state.password))
-      alert('found');
+      this.setState({ redirect: true })
     else
       alert('not found');
     event.preventDefault();
@@ -47,8 +43,10 @@ class signInForm extends Component {
   }
 
   render() {
-    console.log(this.props.users)
-    return (
+      if(this.state.redirect){
+        return(<Redirect to='/login' />)    
+      }
+      return (
       <form onSubmit={this.handleSubmit}>
         <label>
           Username:
@@ -62,6 +60,8 @@ class signInForm extends Component {
         </label>
         <input type="submit" value="Submit" disabled={this.props.users.length===0} />
       </form>
+
+
     );
   }
 }

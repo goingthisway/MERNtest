@@ -26,3 +26,27 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.two-col {
+    overflow: hidden;/* Makes this div contain its floats */
+}
+
+
+.two-col .col1,
+.two-col .col2,
+.two-col .col1_text {
+    width: 49%;
+}
+
+.two-col .col1,
+.two-col .col1_text {
+    float: left;
+}
+
+.two-col .col2 {
+    float: right;
+}
+
+.two-col label {
+    display: block;
+}
