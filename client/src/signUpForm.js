@@ -30,9 +30,19 @@ class signUpForm extends Component {
   handleSubmit(event) {
     if(this.checkUser(this.state.username,this.state.password))
       alert('User Already Exists');
-    else
-      alert('Account Created');
+    else{
+        fetch('/users', {
+           method: 'POST',
+           body:  JSON.stringify({username: this.state.username, password: this.state.password})
+        })
+        .then(function(response){ 
+         return response.json();   
+        })
+        .then(function(data){ 
+        console.log(data)
+        });
     event.preventDefault();
+  }
   }
 
   checkUser(name,pword) {

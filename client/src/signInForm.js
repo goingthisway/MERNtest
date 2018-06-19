@@ -27,14 +27,14 @@ class signInForm extends Component {
     if(this.checkUser(this.state.username,this.state.password))
       this.setState({ redirect: true })
     else
-      alert('not found');
+      alert('username or password is incorrect');
     event.preventDefault();
   }
 
   checkUser(name,pword) {
     var found = false;
-    for(var i = 0; i < this.props.users.length; i++) {
-      if (this.props.users[i].username === name) {
+    for(var i = 0; i < this.props.users.rows[0].length; i+=2) {
+      if (this.props.users.rows[0][i] === name && this.props.users.rows[0][i+1]===pword){
           found = true;
           break;
       }
